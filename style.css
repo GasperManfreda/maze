@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url(background.png);
+    background-repeat: repeat;
+    background-size: 550px;
+}
+#mazeCanvas{  
+    height: 500px;
+    width: 500px;
+    display: block;
+}
+.main { 
+    width: 600px;
+    height: 600px;
+}
+img{
+    margin-left: 35%;
+    height: 22%;
+    width: 35%;
+}
+#solve{
+    height: 40px;
+    width: 70px;
+}
+
