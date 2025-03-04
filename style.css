@@ -2,31 +2,81 @@
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: 'pixelart';
+    src: url('font/ARCADECLASSIC.TTF') ;
+}
+html, body{
+    font-family: 'pixelart';
+    height: 100%;
+    width: 100%;
+}
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     margin: 0;
-    background-image: url(background.png);
+    background-image: url(img/background.png);
     background-repeat: repeat;
     background-size: 550px;
 }
-#mazeCanvas{  
-    height: 500px;
-    width: 500px;
-    display: block;
+.divMaze{
+    margin-left: 12%;
+    position: relative;
+    height: 550px;
+    width: 550px;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mazeCanvas{
+    position: absolute;  
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+#mazeCanvas2{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 .main { 
-    width: 600px;
-    height: 600px;
-}
-img{
-    margin-left: 35%;
-    height: 22%;
-    width: 35%;
-}
-#solve{
-    height: 40px;
-    width: 70px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
+.stranski {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.finish{
+    position: absolute;
+    z-index: 11;
+    margin-left: 33px;
+    margin-top: 511px;
+    height: 7%;
+    width: 7%;
+}
+#solve, #reset{
+    font-size: 20px;
+    font-family: 'pixelart';
+    border: 3px solid;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffb84a;
+    cursor: pointer;
+}
+#naslov{
+    margin-top: -10%;
+    font-size:50px;
+}

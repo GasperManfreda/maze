@@ -1,19 +1,24 @@
 var canvas = document.getElementById('mazeCanvas');
 var ctx = canvas.getContext('2d');
+var canvas2 = document.getElementById('mazeCanvas2');
+var ctx2 = canvas2.getContext('2d');
+
 
 const buttonSolve = document.getElementById("solve");
 const buttonReset = document.getElementById("btn-reset");
-
+var slider = document.getElementById("slider");
+let slid;
 buttonSolve.onclick = function() {
-    solve();
     buttonSolve.disabled = true;
-    buttonReset.disabled = true;
-};       
+    solve();
 
+}; 
+   
 ctx.save();
 ctx.font="15px ''";
 ctx.font="   15px ''";
 ctx.scale(1.55,1.55);
+ctx2.scale(1.55,1.55);
 function draw() {
 ctx.strokeStyle="black";
 ctx.font="   15px ''";
@@ -606,16 +611,17 @@ function solve() {
 
     ctx.moveTo(points[0][0], points[0][1]);
     drawStep(1);
+    
 }
 const DELAY = 50;
 function drawStep(index) {
     if (index >= points.length) {
+        drawImg();
         buttonSolve.disabled = false;
-        buttonReset.disabled = false;
         return;
     }
 
-    const [x, y] = points[index];
+    const [x, y] = points[index];  
     ctx.lineTo(x, y);
     ctx.stroke();
 
@@ -623,4 +629,69 @@ function drawStep(index) {
         drawStep(index + 1);
     }, DELAY);
 }
+const img = new Image();
+
+
+
+let currentIndex = 0;
+index = 0
+    let x = points[0][0];
+    let y = points[0][1];
+
+    
+
+    let speed = 0.1;  // Speed of the movement, adjust as necessary
+    
+    
+
+      // Draw image at the current position
+      function drawImg() {
+         // Clear canvas
+        //draw();
+         // Draw image
+         ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+        if (currentIndex >= points.length - 1) {
+            return;  // Exit the function to stop animation
+        }
+       
+        // Move towards the next point
+        const targetX = points[currentIndex][0];
+        const targetY = points[currentIndex][1];
+
+        // Calculate direction vector
+        const dx = targetX - x;
+        const dy = targetY - y;
+        
+
+        if(points[index][0] < points[index+1][0]){
+            img.src="img/car_right.png";
+            car_size = ctx2.drawImage(img, x-10, y-5,20,10);
+        }
+        else if(points[index][0] > points[index+1][0]){
+            img.src="img/car_left.png";
+            car_size = ctx2.drawImage(img, x-5, y-5,20,10);
+        }
+        else if(points[index][1] > points[index+1][1]){
+            img.src="img/car_up.png";
+            car_size = ctx2.drawImage(img, x-5, y-10,10,20);
+        }
+        else if(points[index][1] < points[index+1][1]){
+            img.src="img/car_down.png";
+            car_size = ctx2.drawImage(img, x-5, y-10,10,20);
+        }
+        // Move the image smoothly towards the target point
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
+          // Once the current point is reached, move to the next point
+          currentIndex = (currentIndex + 1) % points.length;  // Loop through points
+        }
+        else {
+          x += dx * speed;
+          y += dy * speed;
+        }
+        index = currentIndex - 1;
+
+        requestAnimationFrame(drawImg); // Continue the animation
+    }
+
+    
 draw();
