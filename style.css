@@ -53,7 +53,7 @@ body {
     gap: 20px;
 }
 
-.stranski {
+.stranski, #speed_div{
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -68,6 +68,7 @@ body {
     width: 7%;
 }
 #solve, #reset{
+    width: 225px;
     font-size: 20px;
     font-family: 'pixelart';
     border: 3px solid;
@@ -77,6 +78,39 @@ body {
     cursor: pointer;
 }
 #naslov{
-    margin-top: -10%;
+    margin-top: -15%;
     font-size:50px;
+}
+input[type="range"] {
+    -webkit-appearance: none; 
+    appearance: none;
+    height: 10px;
+    background: #B67835; 
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #ffb84a; 
+    border: 2px solid;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#speed{
+    margin: 0 auto;
+    font-size:20px;
+}
+#min_max{
+    word-spacing: 145px;
+}
+#speed_div{
+    border: 3px solid;
+    border-radius: 10px;
+    padding: 10px;
 }

@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="img/fav_icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maze</title>
     
@@ -19,6 +20,11 @@
         <div class="stranski">
             <button id="solve">Solve</button>
             <button id="reset">Reset</button>
+            <div id="speed_div">
+                <p id="speed">SPEED</p>
+                <input type="range" min="50" max="400" value="225"  id="slider">
+                <p id="min_max">MIN MAX</p>
+            </div>
         </div>
     </div>  
     <script src="script.js"></script>
